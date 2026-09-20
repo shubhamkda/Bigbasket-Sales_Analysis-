@@ -94,10 +94,54 @@ SELECT `Item Type`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k') AS To
 #### Insight
 This analysis provides a product-type-level comparison using multiple KPIs. It can help identify which product groups contribute more revenue and how their sales levels compare with customer ratings and item volumes.  
 
+### 7. Sales by Fat Content and Outlet Location
+#### Business Objective
+Compare product sales across outlet location types while also considering product fat content.  
+```text
+SELECT `Item Fat Content`, `Outlet Location Type`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k' ) AS Total_Sales, CONCAT(CAST(AVG(Sales) AS DECIMAL(10,0)), 'M') AS Avg_Sales, COUNT(*) AS Total_No_Items, CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating FROM bigbasket_grocery_data GROUP BY `Item Fat Content`, `Outlet Location Type` ORDER BY Total_Sales;
+```
+#### Insight
+Combining product characteristics with outlet location provides a more detailed view of sales distribution. This can help identify whether certain product segments perform differently across different location types.  
 
+### 8. Sales by Outlet Establishment Year
+#### Business Objective
+Examine sales performance based on the year in which an outlet was established.  
+```text
+SELECT `Outlet Establishment Year`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k') AS Total_Sales, CONCAT( CAST(AVG(Sales) AS DECIMAL(10,0)), 'M') AS Avg_Sales, COUNT(*) AS No_of_Items FROM bigbasket_grocery_data GROUP BY `Outlet Establishment Year` ORDER BY Total_Sales;
+```
+#### Insight
+Analyzing sales by establishment year allows the business to compare the performance of outlets across different periods of operation. This can be useful when examining outlet maturity, sales contribution, and the distribution of products across outlet generations.  
 
+### 9. Revenue Contribution by Outlet Size
+#### Business Objective
+Determine how much of the overall revenue is contributed by each outlet-size category.  
+```text
+SELECT `Outlet Size`, CAST( SUM(Sales) AS DECIMAL(10,2) ) AS Total_Sales, CAST( ( SUM(Sales) * 100.0 / SUM(SUM(Sales)) OVER() ) AS DECIMAL(10,2) ) AS Sales_Percentage FROM bigbasket_grocery_data GROUP BY `Outlet Size`;
+```
+#### Insight
+The query calculates both the absolute sales value and each outlet size's percentage contribution to total revenue. This makes it easier to compare revenue distribution across different outlet-size segments.
 
+### 10. Sales Distribution by Outlet Location
+#### Business Objective
+Understand how total revenue is distributed across different outlet location classifications.  
+```text
+SELECT `Outlet Location Type`, CAST( SUM(Sales) AS DECIMAL(10,2) ) AS Total_Sales, CAST( ( SUM(Sales) * 100.0 / SUM(SUM(Sales)) OVER() ) AS DECIMAL(10,2) ) AS Sales_Percentage FROM bigbasket_grocery_data GROUP BY `Outlet Location Type`;
+```
+#### Insight
+This analysis provides a location-level view of revenue contribution. The percentage calculation makes it possible to compare the relative contribution of each location type to total sales.  
 
+### 11. Complete KPI Analysis by Outlet Type
+#### Business Objective
+Create a consolidated performance view of different outlet types using multiple business metrics.  
+```text
+SELECT `Outlet Type`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k' ) AS Total_Sales, CONCAT( CAST(AVG(Sales) AS DECIMAL(10,0)), 'M' ) AS Avg_Sales, COUNT(*) AS No_of_Items, CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating FROM bigbasket_grocery_data GROUP BY `Outlet Type` ORDER BY Total_Sales DESC
+```
+#### Insight
+This query brings together several important indicators — total sales, average sales, number of items, and average rating — for each outlet type. The resulting summary can be used to compare the overall characteristics and performance of different outlet formats.  
+
+## 📈 Power BI Dashboard
+The SQL analysis can be further visualized through an interactive Power BI dashboard.  
+The dashboard can include:  
 
 
 
