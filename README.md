@@ -62,12 +62,26 @@ The average sales metric provides an indication of the typical revenue associate
 #### Business Question
 How many product records are present in the dataset?  
 ```text
-SELECT COUNT(*) AS Total_No_Items FROM bigbasket_grocery_data;```
+SELECT COUNT(*) AS Total_No_Items FROM bigbasket_grocery_data;
+```
+#### Insight
+This query measures the total number of item records available for analysis and provides an indication of the breadth of the grocery product dataset.  
 
-### Insight
+### 4. Average Customer Rating
+#### Business Question
+What is the average customer rating across all products?  
+```text
+SELECT CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating FROM bigbasket_grocery_data;
+```
+#### Insight
+Average rating provides a general indicator of customer feedback associated with the products. It can be analyzed alongside sales performance to understand the relationship between product popularity and customer ratings.  
 
-
-
+### 5. Sales Analysis by Fat Content
+#### Business Objective
+Analyze how sales performance varies between different product fat-content classifications.  
+```text
+SELECT `Item Fat Content`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k' ) AS Total_Sales_Thousands, CONCAT( CAST(AVG(Sales) AS DECIMAL(10,0)), 'M' ) AS Avg_Sales, COUNT(*) AS Total_No_Items, CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating FROM bigbasket_grocery_data GROUP BY `Item Fat Content` ORDER BY Total_Sales_Thousands DESC;
+```
 
 
 
