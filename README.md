@@ -1,4 +1,4 @@
-# Coffee Shop Sales Analysis Dashboard | (SQL Power BI)
+# BigBasket Grocery Data Analysis using SQL
 ## Project Overview
 The **BigBasket Grocery Data Analysis** project focuses on analyzing grocery sales data using **SQL, Excel, and Power BI**.
 The project explores sales performance, product characteristics, customer ratings, and outlet-level distribution to identify meaningful business patterns. SQL queries are used to transform the raw dataset into analytical summaries, while Power BI can be used to present the findings through interactive dashboards.  
@@ -82,6 +82,39 @@ Analyze how sales performance varies between different product fat-content class
 ```text
 SELECT `Item Fat Content`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k' ) AS Total_Sales_Thousands, CONCAT( CAST(AVG(Sales) AS DECIMAL(10,0)), 'M' ) AS Avg_Sales, COUNT(*) AS Total_No_Items, CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating FROM bigbasket_grocery_data GROUP BY `Item Fat Content` ORDER BY Total_Sales_Thousands DESC;
 ```
+#### Insight
+Grouping sales by fat content makes it possible to compare different product classifications based on revenue, number of items, average sales, and customer ratings. These comparisons can provide useful information for assortment planning and product-level analysis.  
+
+### 6. Sales Performance by Item Type
+#### Business Objective
+Determine how different product types contribute to overall sales.  
+```text
+SELECT `Item Type`, CONCAT( CAST(SUM(Sales) / 1000 AS DECIMAL(10,2)), 'k') AS Total_Sales, CONCAT(CAST(AVG(Sales) AS DECIMAL(10,0)), 'M') AS Avg_Sales, COUNT(*) AS Total_No_Items, CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating FROM bigbasket_grocery_data GROUP BY `Item Type` ORDER BY Total_Sales;
+```
+#### Insight
+This analysis provides a product-type-level comparison using multiple KPIs. It can help identify which product groups contribute more revenue and how their sales levels compare with customer ratings and item volumes.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
