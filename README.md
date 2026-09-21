@@ -141,19 +141,60 @@ This query brings together several important indicators — total sales, average
 
 ## 📈 Power BI Dashboard
 The SQL analysis can be further visualized through an interactive Power BI dashboard.  
-The dashboard can include:  
+The dashboard include:  
+#### KPI Cards
+* Total Sales
+* Average Sales
+* Number of Items
+* Average Rating
 
+#### Product Analysis
+* Sales by Item Type
+* Sales by Fat Content
+* Average Rating by Product Type
+* Item distribution by category
 
+#### Outlet Analysis
+* Sales by Outlet Type
+* Sales by Outlet Size
+* Sales by Outlet Location
+* Sales by Outlet Establishment Year
 
+#### Interactive Filters
+Users can filter the dashboard based on relevant dimensions such as:  
+* Item Type
+* Item Fat Content
+* Outlet Type
+* Outlet Size
+* Outlet Location
+* Establishment Year
 
+## 🎯 Key Business Areas Covered
+This project demonstrates how SQL and Power BI can be combined to analyze multiple aspects of grocery retail performance.  
+#### Sales Performance
+Evaluate overall revenue and average sales metrics.
 
+#### Product Performance
+Compare product types and fat-content segments using sales, volume, and rating indicators.
 
+#### Outlet Performance
+Understand differences between outlet types, sizes, locations, and establishment years.
 
+#### Customer Feedback
+Use product ratings as an additional metric when evaluating product-level performance.
 
+#### Revenue Distribution
+Calculate the percentage contribution of different outlet segments to overall sales.
 
-
-
-
+## 📁 Repository Structure
+BigBasket-Grocery-Data-Analysis/  
+│  
+├── BigBasket_Data_Analysis.sql  
+├── BigBasket_Grocery_Data.xlsx  
+├── BigBasket_Grocery_Dashboard.pbix  
+├── Images/  
+│   └── dashboard.png  
+└── README.md  
 
 
 
