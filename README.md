@@ -197,6 +197,10 @@ BigBasket-Grocery-Data-Analysis/
 └── README.md  
 
 
+## Dashboard Preview
+<img src="images/Bigbasket Dashboard.png" 
+     alt="Coffee Sales Dashboard" 
+     width="900">
 
 
 
